@@ -27,3 +27,22 @@ def rmse_daytime(pred, true, cs_target):
 def mae_daytime(pred, true, cs_target):
     m = cs_target > CS_MIN
     return float(np.mean(np.abs(pred[m] - true[m])))
+
+
+def advect(kt_now, kt_prev, h):
+    """Shift the field by the global integer motion (cells per hour) that best maps kt(t-1) onto kt(t), repeated h times."""
+    best, bs = None, (0, 0)
+    for dy in range(-2, 3):
+        for dx in range(-2, 3):
+            sh = np.roll(np.roll(kt_prev, dy, axis=0), dx, axis=1)
+            sl = (slice(max(dy, 0) + 0, 10 + min(dy, 0)), slice(max(dx, 0) + 0, 10 + min(dx, 0)))
+            err = np.mean((sh[sl] - kt_now[sl]) ** 2)
+            if best is None or err < best:
+                best, bs = err, (dy, dx)
+    out = np.roll(np.roll(kt_now, bs[0] * h, axis=0), bs[1] * h, axis=1)
+    # cells that wrapped around are replaced by the unshifted field
+    if bs[0] * h > 0: out[:min(bs[0] * h, 10)] = kt_now[:min(bs[0] * h, 10)]
+    if bs[0] * h < 0: out[max(10 + bs[0] * h, 0):] = kt_now[max(10 + bs[0] * h, 0):]
+    if bs[1] * h > 0: out[:, :min(bs[1] * h, 10)] = kt_now[:, :min(bs[1] * h, 10)]
+    if bs[1] * h < 0: out[:, max(10 + bs[1] * h, 0):] = kt_now[:, max(10 + bs[1] * h, 0):]
+    return out

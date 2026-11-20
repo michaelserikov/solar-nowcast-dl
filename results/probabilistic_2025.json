@@ -1,0 +1,74 @@
+{
+ "1": {
+  "persistence_residual_quantiles": {
+   "median_rmse": 67.11595916748047,
+   "pinball": 15.038508415222168,
+   "coverage_80": 0.8077997178446412
+  },
+  "advection_residual_quantiles": {
+   "median_rmse": 65.98712921142578,
+   "pinball": 14.679534912109375,
+   "coverage_80": 0.771049704603562
+  },
+  "quantile_cnn": {
+   "median_rmse": 53.426734924316406,
+   "pinball": 10.033178329467773,
+   "coverage_80": 0.7773957927072951
+  },
+  "cnn_epochs": 55
+ },
+ "2": {
+  "persistence_residual_quantiles": {
+   "median_rmse": 96.05986785888672,
+   "pinball": 22.924928665161133,
+   "coverage_80": 0.8042872206734172
+  },
+  "advection_residual_quantiles": {
+   "median_rmse": 94.2963638305664,
+   "pinball": 22.410369873046875,
+   "coverage_80": 0.7259578115144424
+  },
+  "quantile_cnn": {
+   "median_rmse": 67.19728088378906,
+   "pinball": 13.225837707519531,
+   "coverage_80": 0.7906513166447587
+  },
+  "cnn_epochs": 50
+ },
+ "4": {
+  "persistence_residual_quantiles": {
+   "median_rmse": 158.92007446289062,
+   "pinball": 33.99652862548828,
+   "coverage_80": 0.8024743965679123
+  },
+  "advection_residual_quantiles": {
+   "median_rmse": 157.83335876464844,
+   "pinball": 33.72780227661133,
+   "coverage_80": 0.8100362564821101
+  },
+  "quantile_cnn": {
+   "median_rmse": 90.14149475097656,
+   "pinball": 18.281330108642578,
+   "coverage_80": 0.7874036410560121
+  },
+  "cnn_epochs": 51
+ },
+ "6": {
+  "persistence_residual_quantiles": {
+   "median_rmse": 202.12527465820312,
+   "pinball": 40.50015640258789,
+   "coverage_80": 0.8027416256193214
+  },
+  "advection_residual_quantiles": {
+   "median_rmse": 201.74436950683594,
+   "pinball": 40.66860580444336,
+   "coverage_80": 0.7902179722370682
+  },
+  "quantile_cnn": {
+   "median_rmse": 110.76724243164062,
+   "pinball": 22.104299545288086,
+   "coverage_80": 0.8220013770722289
+  },
+  "cnn_epochs": 32
+ }
+}

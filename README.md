@@ -18,6 +18,19 @@ Open-Meteo satellite archive (hourly shortwave radiation from satellite-based pr
 
 Climatological clear-sky index: 161 at every horizon. The CNN improves on smart persistence by 20% at 1 h and 57% at 6 h, and on ridge by 14-17% (`results/models_2025.json`, `scripts/run_models.py`, `scripts/run_baselines.py`).
 
+## Probabilistic version (v0.2)
+
+A convolutional network that outputs the 10%, 50% and 90% quantiles of the clear-sky index (pinball loss, non-crossing by construction), against two reference methods that use the same residual quantiles taken from the training years: smart persistence and an advected field (global integer shift between the last two hours, repeated for the horizon). Test year 2025, daytime cells (`scripts/run_prob.py`, `results/probabilistic_2025.json`).
+
+| Horizon | Pinball loss, persistence | Pinball loss, advection | Pinball loss, quantile CNN | Coverage of the 80% interval (CNN) | Median RMSE W/m2 (CNN) |
+|---|---|---|---|---|---|
+| 1 h | 15.0 | 14.7 | 10.0 | 0.78 | 53.4 |
+| 2 h | 22.9 | 22.4 | 13.2 | 0.79 | 67.2 |
+| 4 h | 34.0 | 33.7 | 18.3 | 0.79 | 90.1 |
+| 6 h | 40.5 | 40.7 | 22.1 | 0.82 | 110.8 |
+
+The CNN lowers the pinball loss by 33% (1 h) to 46% (6 h) against both reference methods and its intervals hold about 80% (0.78 to 0.82). Advection barely beats persistence: with a grid spacing of about 80 km and hourly steps, clouds move less than a cell per hour, so a global shift rarely changes the field. This is a limit of the data (hourly point products), not a statement about advection on satellite images at 5 to 15 minutes.
+
 ## Limits
 
 - **Hourly point products on a grid, not satellite images.** At hourly steps and a grid spacing of about 80 km, cloud motion is resolved only coarsely; this is not a 5-15 minute image nowcast and the results do not transfer to one.

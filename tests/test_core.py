@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from snc.baselines import rmse_daytime, smart_persistence, CS_MIN
+from snc.baselines import rmse_daytime, smart_persistence, CS_MIN, advect
 from snc.features import clear_sky, kt_of, make_inputs, time_feats
 
 
@@ -41,3 +41,12 @@ def test_input_shape_and_no_future():
     assert x.shape == (2, 3 + 1 + 4, 10, 10)
     kt2 = kt.copy(); kt2[12:] = 9.0                         # values after origin 11 must not enter
     assert np.allclose(make_inputs(kt2, cs, time_feats(idx), t, 3)[:, :3], x[:, :3])
+
+
+def test_advection_recovers_a_shifted_pattern():
+    rng = np.random.default_rng(0)
+    prev = rng.random((10, 10)).astype("float32")
+    now = np.roll(prev, 1, axis=1)                  # pattern moved one cell east
+    out = advect(now, prev, 1)
+    assert np.allclose(out[:, 2:], np.roll(now, 1, axis=1)[:, 2:])   # continues one more cell
+    assert np.allclose(advect(now, now, 3), now)    # no motion: unchanged
