@@ -8,6 +8,8 @@ def clear_sky(field, idx, train_mask):
     out = np.zeros_like(field)
     for k in np.unique(keys):
         m = keys == k
+        if not (train_mask & m).any():   # no training data for this month and hour: leave 0 (no forecast)
+            continue
         out[m] = np.quantile(field[train_mask & m], 0.98, axis=0)
     return out
 
