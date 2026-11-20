@@ -30,3 +30,7 @@ Climatological clear-sky index: 161 at every horizon. The CNN improves on smart 
 ```bash
 python scripts/download_grid.py && python scripts/run_baselines.py && python scripts/run_models.py   # needs torch (CPU is enough)
 ```
+
+## Data licence
+
+Radiation data: Open-Meteo satellite archive (https://open-meteo.com), CC BY 4.0, derived from satellite-based radiation products. The raw downloads are included in `data/raw/`.
