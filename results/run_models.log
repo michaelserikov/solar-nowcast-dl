@@ -1,0 +1,5 @@
+1 {'smart_persistence': 67.1, 'ridge_5x5': 62.0, 'cnn': 53.6, 'cnn_epochs': 34}
+2 {'smart_persistence': 96.8, 'ridge_5x5': 80.7, 'cnn': 67.0, 'cnn_epochs': 40}
+3 {'smart_persistence': 131.0, 'ridge_5x5': 95.0, 'cnn': 79.8, 'cnn_epochs': 25}
+4 {'smart_persistence': 170.8, 'ridge_5x5': 106.8, 'cnn': 90.7, 'cnn_epochs': 39}
+6 {'smart_persistence': 251.7, 'ridge_5x5': 121.3, 'cnn': 108.6, 'cnn_epochs': 26}

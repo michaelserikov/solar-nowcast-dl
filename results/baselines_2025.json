@@ -1,0 +1,32 @@
+{
+ "1": {
+  "persistence_ghi": 106.41352081298828,
+  "smart_persistence": 67.12652587890625,
+  "climatological_kt": 161.02967834472656,
+  "n_daytime_cells": 415374
+ },
+ "2": {
+  "persistence_ghi": 180.21705627441406,
+  "smart_persistence": 96.75581359863281,
+  "climatological_kt": 161.02967834472656,
+  "n_daytime_cells": 415374
+ },
+ "3": {
+  "persistence_ghi": 242.4921417236328,
+  "smart_persistence": 130.968505859375,
+  "climatological_kt": 161.02967834472656,
+  "n_daytime_cells": 415374
+ },
+ "4": {
+  "persistence_ghi": 292.14117431640625,
+  "smart_persistence": 170.76036071777344,
+  "climatological_kt": 161.02967834472656,
+  "n_daytime_cells": 415374
+ },
+ "6": {
+  "persistence_ghi": 353.91278076171875,
+  "smart_persistence": 251.7123260498047,
+  "climatological_kt": 161.02967834472656,
+  "n_daytime_cells": 415374
+ }
+}
